@@ -45,6 +45,13 @@ RUN mkdir -p /usr/share/maven /usr/share/maven/ref \
 ENV MAVEN_HOME /usr/share/maven
 ENV MAVEN_CONFIG /opt/.m2
 
+# install nodejs
+RUN curl --silent --location https://deb.nodesource.com/setup_12.x | bash -
+RUN apt-get install -y \
+  nodejs
+RUN echo "Node: " && node -v
+RUN echo "NPM: " && npm -v
+
 RUN npm install -g phantomjs --unsafe-perm --ignore-scripts
 
 RUN git clone ${PINOT_GIT_URL} ${TE_BUILD_DIR} \
