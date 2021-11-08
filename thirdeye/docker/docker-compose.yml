@@ -3,6 +3,7 @@ version: '3'
 services:
   dashboard:
     image: koat/thirdeye:latest
+    platform: linux/amd64
     ports:
       - "1426:1426"
       - "1427:1427"
